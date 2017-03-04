@@ -3,7 +3,8 @@
     "coffee-script": "^1.9.3"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "validator": "^7.0.0"
   },
   "scripts": {
     "test": "mocha --reporter spec --compilers coffee:coffee-script/register"
