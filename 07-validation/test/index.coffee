@@ -52,3 +52,19 @@ describe '07-validation', ->
   # !!!!!
   # Add more tests for different data that users might try to provide!
   # !!!!!
+
+   it 'should return `false` for missing data: id', ->
+    assert !validate
+
+      name: 'John Doe'
+      email: 'foo@bar.com'
+      taxRate: 0.1
+      favouriteColour: '#ccccff'
+      interests: ["cycling", "programming"]
+    
+    #test for name, email, taxRate required fields
+    #invalid taxRate - range check, pass string
+    #invalid interests
+    #valid data without color and interests
+    #valid type id - pass string
+    #email length more than 255
