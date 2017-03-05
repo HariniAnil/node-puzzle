@@ -23,7 +23,7 @@ test.describe 'Adslot website', ->
     browser.findElement(webdriver.By.name('q')).sendKeys('adslot')
     browser.findElement(webdriver.By.name('btnG')).click()
     browser.wait(webdriver.until.titleIs('adslot - Google Search'), 1000)
-    linkElements = browser.findElement(webdriver.By.xpath("//h3[@class='r']/a")).click()
+    browser.findElement(webdriver.By.xpath("//h3[@class='r']/a")).click()
     browser.wait(webdriver.until.titleIs('Adslot'), 1000)
 
     assert browser.getTitle(), 'Adslot'
