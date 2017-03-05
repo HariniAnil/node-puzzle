@@ -1,5 +1,7 @@
 assert = require 'assert'
 test = require 'selenium-webdriver/testing'
+chrome = require('selenium-webdriver/chrome')
+path = require('chromedriver').path
 webdriver = require 'selenium-webdriver'
 
 
@@ -14,6 +16,18 @@ test.describe 'Adslot website', ->
   # Close browser after all tests
   test.after -> browser.quit()
 
+  test.it 'should navigate to website on successful google search', ->
+
+    browser.get 'https://www.google.com'
+
+    browser.findElement(webdriver.By.name('q')).sendKeys('adslot')
+    browser.findElement(webdriver.By.name('btnG')).click()
+    browser.wait(webdriver.until.titleIs('adslot - Google Search'), 1000)
+    linkElements = browser.findElement(webdriver.By.xpath("//h3[@class='r']/a")).click()
+    browser.wait(webdriver.until.titleIs('Adslot'), 1000)
+
+    assert browser.getTitle(), 'Adslot'
+  
 
   test.it 'should have 8 offices on careers page', ->
 
@@ -30,4 +44,11 @@ test.describe 'Adslot website', ->
     browser.findElement(webdriver.By.id('first_name')).isDisplayed()
     browser.findElement(webdriver.By.id('last_name')).isDisplayed()
     browser.findElement(webdriver.By.id('message')).isDisplayed()
+    browser.findElement(webdriver.By.id('company')).isDisplayed()
+    browser.findElement(webdriver.By.id('email')).isDisplayed()
+    browser.findElement(webdriver.By.id('website')).isDisplayed()
+    browser.findElement(webdriver.By.id('00N90000004oGQH')).isDisplayed()
     browser.findElement(webdriver.By.css('button[type=submit]')).isDisplayed()
+
+  
+

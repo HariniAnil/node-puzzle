@@ -7,6 +7,10 @@
     "selenium-webdriver": "^2.47.0"
   },
   "scripts": {
-    "test": "mocha --timeout 60000 --reporter spec --compilers coffee:coffee-script/register test.coffee"
+    "test": "mocha --timeout 60000 --reporter spec --compilers coffee:coffee-script/register test.coffee",
+    "preinstall-chromedriver": "npm install",
+    "install-chromedriver": "node node_modules/chromedriver/install.js",
+    "pretest_e2e": "npm run install-chromedriver",
+    "test_e2e": "node release/test/rune2e.js"
   }
 }
