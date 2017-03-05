@@ -20,7 +20,7 @@ exports.validate = (data) ->
   if !validators.isEmail(data.email) then return false #email validation
   if !validators.isLength(data.email, {min:7, max: 255}) then return false #email length check
   if !validators.isLength(data.name, {min:1, max: 63}) then return false #name length check
-  if !validators.isHexColor(data.favouriteColour) then return false #hex color value check
+  if data.hasOwnProperty('favouriteColour') && !validators.isHexColor(data.favouriteColour) then return false #hex color value check
   if !validators.isFloat(data.taxRate + '', {min:0, max:1}) then return false #taxRate type and range check
 
   if data.interests && !Array.isArray(data.interests) then return false #interests should be array
