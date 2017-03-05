@@ -22,13 +22,21 @@ test.describe 'Adslot website', ->
 
     browser.findElement(webdriver.By.name('q')).sendKeys('adslot')
     browser.findElement(webdriver.By.name('btnG')).click()
-    browser.wait(webdriver.until.titleIs('adslot - Google Search'), 1000)
-    browser.findElement(webdriver.By.xpath("//h3[@class='r']/a")).click()
+    browser.wait(webdriver.until.titleIs('adslot - Google Search'), 2000)
+    browser.findElement(webdriver.By.xpath("//div[(@class='rc')and(@data-hveid='25')]/h3[@class='r']/a")).click()
     browser.wait(webdriver.until.titleIs('Adslot'), 1000)
 
     assert browser.getTitle(), 'Adslot'
-  
 
+  test.it 'should contain a form on "Login" page', ->
+
+    browser.get 'https://symphony.facilitatedigital.com/public/login.aspx'
+
+
+    browser.findElement(webdriver.By.id('UserName')).isDisplayed()
+    browser.findElement(webdriver.By.id('Password')).isDisplayed()
+    browser.findElement(webdriver.By.id('Login')).isDisplayed()
+    
   test.it 'should have 8 offices on careers page', ->
 
     browser.get 'http://adslot.com/careers'
